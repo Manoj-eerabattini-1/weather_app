@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Cloudy Sky Gradient Background */
+        body {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.8), rgba(0, 178, 255, 0.8)), url('https://www.transparenttextures.org/patterns/skyline.png');
+            background-size: cover;
+            background-attachment: fixed;
+            color: #333;
+            position: relative;
+            min-height: 100vh; /* Ensures the body covers the whole viewport height */
+        }
+
+        /* Snowfall Animation with Snowflake Divs */
+        .snow {
+            position: absolute; /* Changed to absolute */
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1; /* Ensure it is behind all other content */
+            overflow: hidden;
+        }
+
+        /* Snowflakes Style */
+        .snow div {
+            position: absolute;
+            top: -10px;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%; /* Circular snowflakes */
+            opacity: 0.8;
+            animation: snowflakes 5s linear infinite;
+        }
+
+        /* Snowflake fall animation */
+        @keyframes snowflakes {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Search Button Updated Color */
+        #search-button {
+            background-color: #00aaff !important; /* Sky blue */
+            color: white !important;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #search-button:hover {
+            background-color: #0088cc !important; /* Slightly darker blue on hover */
+        }
+
+        #search-button:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 170, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800">
+
+    <!-- Snow Background -->
+    <div class="snow">
+        <!-- Create multiple snowflakes (divs) -->
+        <div style="left: 10%; animation-duration: 7s;"></div>
+        <div style="left: 20%; animation-duration: 6s;"></div>
+        <div style="left: 30%; animation-duration: 8s;"></div>
+        <div style="left: 40%; animation-duration: 5s;"></div>
+        <div style="left: 50%; animation-duration: 7s;"></div>
+        <div style="left: 60%; animation-duration: 9s;"></div>
+        <div style="left: 70%; animation-duration: 6s;"></div>
+        <div style="left: 80%; animation-duration: 7s;"></div>
+        <div style="left: 90%; animation-duration: 10s;"></div>
+    </div>
+
+    <div class="min-h-screen flex flex-col items-center justify-center py-10 px-5">
+        <div class="container bg-white rounded-lg p-8 shadow-lg">
+            <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">Weather App</h1>
+
+            <!-- Search Section -->
+            <div class="flex justify-center mb-6">
+                <input id="city-input" type="text" placeholder="Enter City Name" 
+                    class="w-2/3 p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button id="search-button" class="ml-4">Search</button>
+            </div>
+
+            <!-- Weather Information -->
+            <div id="weather-info" class="text-center mt-6 hidden">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <h3 id="city-loc" class="text-2xl font-semibold text-gray-800 mb-2">Canada, Ontario - Toronto</h3>
+                    <p id="city-time" class="text-gray-600 mb-4">Local time: 10:00 AM</p>
+
+                    <div class="flex justify-center mb-4">
+                        <span id="city-temp" class="text-4xl font-bold text-red-500">13°C</span>
+                    </div>
+
+                    <!-- Temperature Unit Buttons -->
+                    <div class="mb-6">
+                        <button id="celsius-btn" class="bg-blue-400 text-white px-4 py-2 rounded-lg hover:bg-blue-500 focus:outline-none mr-4">Celsius</button>
+                        <button id="fahrenheit-btn" class="bg-orange-400 text-white px-4 py-2 rounded-lg hover:bg-orange-500 focus:outline-none">Fahrenheit</button>
+                    </div>
+
+                    <!-- Weather Details -->
+                    <div class="space-y-2">
+                        <p><strong>Weather:</strong> <span id="weather-condition" class="text-gray-800">Clear Sky</span> <span id="weather-emoji"></span></p>
+                        <p><strong>Wind Speed:</strong> <span id="wind-speed" class="text-gray-800">15 km/h</span></p>
+                        <p><strong>Humidity:</strong> <span id="humidity" class="text-gray-800">60%</span></p>
+                        <p><strong>Pressure:</strong> <span id="pressure" class="text-gray-800">1012 hPa</span></p>
+                        <p><strong>UV Index:</strong> <span id="uv-index" class="text-gray-800">Low</span></p>
+                        <p><strong>Feels Like:</strong> <span id="feels-like" class="text-gray-800">12°C</span></p>
+                        <p><strong>Sunrise:</strong> <span id="sunrise" class="text-gray-800">06:00 AM</span></p>
+                        <p><strong>Sunset:</strong> <span id="sunset" class="text-gray-800">06:00 PM</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-message" class="mt-6 text-center text-red-500 hidden">
+                <p>Please enter a valid city name.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

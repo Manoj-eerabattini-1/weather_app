@@ -1,0 +1,59 @@
+/* Cloudy Sky Gradient Background */
+body {
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.8), rgba(0, 178, 255, 0.8)), url('https://www.transparenttextures.org/patterns/skyline.png');
+    background-size: cover;
+    background-attachment: fixed;
+    color: #333;
+    position: relative;
+    min-height: 100vh; /* Ensures the body covers the whole viewport height */
+}
+
+/* Snowfall Animation with Snowflake Divs */
+.snow {
+    position: absolute; /* Changed to absolute */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1; /* Ensure it is behind all other content */
+    overflow: hidden;
+}
+
+/* Snowflakes Style */
+.snow div {
+    position: absolute;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%; /* Circular snowflakes */
+    opacity: 0.8;
+    animation: snowflakes 5s linear infinite;
+}
+
+/* Snowflake fall animation */
+@keyframes snowflakes {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+}
+
+/* Search Button Updated Color */
+#search-button {
+    background-color: #00aaff !important; /* Sky blue */
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#search-button:hover {
+    background-color: #0088cc !important; /* Slightly darker blue on hover */
+}
+
+#search-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 170, 255, 0.5);
+}
